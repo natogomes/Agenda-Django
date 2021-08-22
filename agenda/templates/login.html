@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Agenda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #483D8B;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.616);
+            margin-bottom: 70px;
+        }
+
+        label {
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.616);
+            font-size: 1.3em;
+            color: white;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100px;
+            display: block;
+            font-size: 1.1em;
+            color: black;
+            background-color: #808080;
+            margin-top: 25px;
+        }
+
+        input {
+            box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.400);
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="submit" method="post">{% csrf_token %}
+        <div align="center">
+            <h1>LOGIN</h1>
+            <label>Usuário:</label>
+            <input type="text" name="username">
+            <label>Senha:</label>
+            <input type="password" name="password">
+            <button type="submit">Entrar</button>
+        </div>
+    </form>
+    {% for message in messages %}
+        <div align="center">
+            <strong>Erro</strong>{{ message }}
+        </div>
+    {% endfor %}
+</body>
+</html>

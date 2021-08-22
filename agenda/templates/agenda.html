@@ -1,0 +1,45 @@
+{% extends 'model-page.html' %}
+
+{% block content %}
+<h2 xmlns="http://www.w3.org/1999/html">Agendamentos</h2>
+
+<section id="user">
+    Bem víndo <strong>{{ user }}</strong> !
+</section>
+
+{% for evento in eventos %}
+
+<div style={% if evento.get_evento_pre %} "color:blue"
+                 {% endif %}>
+
+    <div style={% if evento.get_evento_atrasado %}  "color:red"
+                     {% endif %}>
+        <ul>
+
+            <li><strong>Evento:</strong> {{evento.titulo}}</li>
+
+            <li><strong>Descrição:</strong> {{evento.descricao}}</li>
+
+            <li><strong>Data do Agendamento:</strong> {{evento.get_data_criacao}}</li>
+
+            <li><strong>Data do Evento:</strong> {{evento.get_data_evento}}</li>
+
+            <li><strong>Local:</strong> {{evento.local}}</li>
+
+            <a href="evento/?id={{ evento.id }}"><button type="button">Editar</button></a>
+            <a href="evento/delete/{{ evento.id }}/"><button type="button">Excluir</button></a>
+
+        <hr>
+
+        </ul>
+
+    </div>
+</div>
+
+{% endfor %}
+
+<nav id="bts_nav">
+    <a href="evento/"  id="bt_evento"><button type="button">Novo Evento</button></a>
+    <a href="expirado/" id="bt_expirado"><button type="button">Eventos Expirados</button></a>
+</nav>
+{% endblock %}
